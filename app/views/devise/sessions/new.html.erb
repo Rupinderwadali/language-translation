@@ -1,6 +1,7 @@
 <div class="User-content">
     <%= form_for resource, as: resource_name, url: session_path(resource_name), html: {class: "Form", name: "loginform" } do |f| %>
-        <div class="Form-group">
+ 	<%= devise_error_messages! %>
+       <div class="Form-group">
             <%= f.label :username, for: "username" %>
             <%= f.text_field :username, autofocus: true, class: "Form-control", id: "username", placeholder: "" %>
         </div>
