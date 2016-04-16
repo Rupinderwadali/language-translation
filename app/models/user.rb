@@ -38,10 +38,8 @@
 
 
 class User < ActiveRecord::Base
-  
-  attr_accessor :avatar
-  mount_uploader :avatar, AvatarUploader
-
+  attr_accessor :no_invitation
+   mount_uploader :avatar, AvatarUploader
   GENGER={male: "Male", female: "Female"}
 
   rolify
@@ -56,17 +54,10 @@ class User < ActiveRecord::Base
   # User Avatar Validation
   validates_integrity_of  :avatar
   validates_processing_of :avatar
- 
-  private
+ private
     def avatar_size_validation
       errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
     end
-    
-   def avatar_url(user)
-  if user.avatar_url.present?
-    user.avatar_url
-  end
-end
   default_scope -> { order('created_at DESC') }
 
   validates_uniqueness_of :username
