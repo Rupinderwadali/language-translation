@@ -6,8 +6,10 @@ gem 'rails' , '4.2.1'
 gem 'pg'
 # pg_search builds ActiveRecord named scopes that take advantage of PostgreSQL's full text search
 gem 'pg_search'
-
+# Use for uploading files and images.
 gem 'carrierwave'
+# Use for resizing of images in your rails application
+gem 'mini_magick'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

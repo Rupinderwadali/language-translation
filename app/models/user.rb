@@ -36,8 +36,11 @@
 #  organization_id        :integer
 #
 
+
 class User < ActiveRecord::Base
-  attr_accessor :no_invitation
+  
+  attr_accessor :avatar
+  mount_uploader :avatar, AvatarUploader
 
   GENGER={male: "Male", female: "Female"}
 
@@ -50,7 +53,20 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :validatable,
          :recoverable, :rememberable, :trackable, :token_authenticatable, :invitable
-
+  # User Avatar Validation
+  validates_integrity_of  :avatar
+  validates_processing_of :avatar
+ 
+  private
+    def avatar_size_validation
+      errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
+    end
+    
+   def avatar_url(user)
+  if user.avatar_url.present?
+    user.avatar_url
+  end
+end
   default_scope -> { order('created_at DESC') }
 
   validates_uniqueness_of :username
