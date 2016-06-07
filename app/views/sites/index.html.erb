@@ -22,7 +22,9 @@
         <div class="AppControls--box AppControls-middle"></div>
 
         <div class="AppControls--box AppControls-right">
-            <a class="button--icontext button--ricontext" href="<%= new_site_path %>"><i class="icon-plus"></i> <span>New Site</span></a>
+	 <% if can? :create, Category %>
+           <a class="button--icontext button--ricontext" href="<%= new_site_path %>"><i class="icon-plus"></i> <span>New Site</span></a>
+	<% end %>
         </div>
     </div>
 
@@ -34,8 +36,13 @@
                     <ul class="CardListTableRow">
                         <li class="CardListTable-cal u-w30px" data-th="#">
                             <div class="CardListTable-content">
-                                <%= link_to site.id, site_path(site) %>
-                            </div>
+                           <% if can? :update, site %>
+				     <%= link_to site.id, site_path(site) %>
+                          <% else %>
+                                    <%= site.id %>
+
+				 <% end %>   
+			 </div>
                         </li>
 
                         <li class="CardListTable-cal u-w180px" data-th="Post">

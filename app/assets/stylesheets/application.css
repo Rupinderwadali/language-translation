@@ -15,3 +15,12 @@
  *= require custom-web-starter-kit
  *= require_self
  */
+.flash {
+color:#83c537;
+font-size:18px;
+width:600px;
+position:fixed;
+top:20px;
+right:10px;
+z-index:9999999;
+}

@@ -22,8 +22,13 @@
         <div class="AppControls--box AppControls-middle"></div>
 
         <div class="AppControls--box AppControls-right">
-            <a class="button--icontext button--ricontext" href="<%= new_category_path %>"><i class="icon-plus"></i> <span>New Category</span></a>
-        </div>
+
+
+         <% if can? :create, Category %>
+	    <a class="button--icontext button--ricontext" href="<%= new_category_path %>"><i class="icon-plus"></i> <span>New Category</span></a>
+              
+        <% end %>
+      </div>
     </div>
 
     <div class="CardListTable">

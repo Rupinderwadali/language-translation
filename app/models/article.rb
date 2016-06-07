@@ -34,13 +34,13 @@ class Article < ActiveRecord::Base
 
   # PgSearch
   pg_search_scope :article_search,
-                  against: :tsv_data,
-                  using: {
-                      tsearch: {
-                          dictionary: 'english',
-                          any_word: true,
-                          prefix: true,
-                          tsvector_column: 'tsv_data'
+                  :against => :tsv_data,
+                  :using=> {
+                      :tsearch=> {
+                          :dictionary=> 'english',
+                          :any_word=> true,
+                          :prefix=> true,
+                          :tsvector_column=> 'tsv_data'
                       }
                   }
 

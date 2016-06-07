@@ -22,8 +22,12 @@
         <div class="AppControls--box AppControls-middle"></div>
 
         <div class="AppControls--box AppControls-right">
-            <a class="button--icontext button--ricontext" href="<%= new_language_path %>"><i class="icon-plus"></i> <span>New Language</span></a>
-        </div>
+	 <% if can? :create, Language %>
+           <a class="button--icontext button--ricontext" href="<%= new_language_path %>"><i class="icon-plus"></i> <span>New Language</span></a>
+              
+        <% end %>
+ 
+       </div>
     </div>
 
     <div class="CardListTable">
