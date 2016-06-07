@@ -22,7 +22,9 @@
         <div class="AppControls--box AppControls-middle"></div>
 
         <div class="AppControls--box AppControls-right">
-            <a class="button--icontext button--ricontext" href="<%= new_organization_path %>"><i class="icon-plus"></i> <span>New Organization</span></a>
+	<% if can? :create, Organization %>
+ <a class="button--icontext button--ricontext" href="<%= new_organization_path %>"><i class="icon-plus"></i> <span>New Organization</span></a>
+        <% end %>
         </div>
     </div>
 

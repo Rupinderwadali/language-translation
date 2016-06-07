@@ -98,7 +98,15 @@ class UsersController < ApplicationController
       end
     end
   end
-
+def avatar_url(user)
+    if user.avatar_url.present?
+      user.avatar_url
+    else
+      default_url = "#{root_url}images/guest.png"
+      gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=#{CGI.escape(default_url)}"
+    end
+  end
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -107,6 +115,6 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :username, :location, :lang, :contact, :gender, :no_invitation, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :username, :location, :lang, :contact, :gender, :no_invitation, :password, :avatar)
   end
 end

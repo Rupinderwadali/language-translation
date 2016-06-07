@@ -15,7 +15,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # Admins have access to their organization only
     if current_user and current_user.has_role? :admin
-      primary.item :organization, "My Organization", edit_organization_path(current_user.organization)
+      primary.item :organizations, "My Organization", organizations_path
     end
 
     # Superadmins, Admins have access to Countries. Admins have access to those that belong to their organization only.
@@ -36,7 +36,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # Volunteers have access to the site they belong to.
     if current_user and current_user.has_role? :volunteer, :any
-      primary.item :sites, "My Site", site_path(Site.with_role(:volunteer, current_user).first)
+      primary.item :sites, "My Site", sites_path
     end
 
     # Superadmins, Admins, and Volunteers have access to all Languages.

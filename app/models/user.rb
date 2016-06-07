@@ -37,8 +37,8 @@
 #
 
 class User < ActiveRecord::Base
+ 
   attr_accessor :no_invitation
-
   GENGER={male: "Male", female: "Female"}
 
   rolify
@@ -62,18 +62,6 @@ class User < ActiveRecord::Base
 
   after_create  :send_invitation
   before_save   :ensure_authentication_token
-
-  # PgSearch
-  pg_search_scope :user_search,
-    against: :tsv_data,
-    using: {
-        tsearch: {
-            dictionary: 'english',
-            any_word: true,
-            prefix: true,
-            tsvector_column: 'tsv_data'
-        }
-    }
 
   private
   def send_invitation
