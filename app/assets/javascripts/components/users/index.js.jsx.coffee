@@ -66,9 +66,11 @@
           </div>
 
           <div className="AppControls--box AppControls-middle"></div>
-	 <div> {button} </div>
-         </div>
-        <UsersIndexList users={users} current_user={current_user} organizations={organizations} admins={admins} volunteers={volunteers}
+	<div className="AppControls--box AppControls-right">`
+	  if (user.id in admins)
+   	   `<a className="button--icontext button--ricontext" href="/members/new"><i className="icon-plus"></i> <span>New Member</span></a>`
+	`</div>
+	 <UsersIndexList users={users} organizations={organizations} admins={admins} volunteers={volunteers}
           contributors={contributors} onUserApproval={this.handleUserApproval}/>
       </main>
     </div>`

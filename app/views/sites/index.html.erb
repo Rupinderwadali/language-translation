@@ -34,12 +34,12 @@
             <% @sites.each do |site| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="#">
+                        <li class="CardListTable-cal u-w30px" data-th="Site">
                             <div class="CardListTable-content">
                            <% if can? :update, site %>
-				     <%= link_to site.id, site_path(site) %>
+				     <%= link_to site.name, site_path(site) %>
                           <% else %>
-                                    <%= site.id %>
+                                    <%= site.name %>
 
 				 <% end %>   
 			 </div>
@@ -48,12 +48,6 @@
                         <li class="CardListTable-cal u-w180px" data-th="Post">
                             <div class="CardListTable-content">
                                 <%= site.country.name if site.country %>
-                            </div>
-                        </li>
-
-                        <li class="CardListTable-cal u-w300px" data-th="Site">
-                            <div class="CardListTable-content">
-                                <%= site.name %>
                             </div>
                         </li>
 
