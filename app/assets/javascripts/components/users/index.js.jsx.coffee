@@ -5,6 +5,7 @@
     admins: @props.admins
     volunteers: @props.volunteers
     contributors: @props.contributors
+    current_user: @props.current_user
   handleUserApproval: (userdata) ->
     approveurl = 'members/approve.json'
     disapproveurl = 'members/disapprove.json'
@@ -36,11 +37,11 @@
     admins = @state.admins
     volunteers = @state.volunteers
     contributors = @state.contributors
-
+    current_user = @state.current_user
     `<div>
       <header className="app-bar promote-layer">
        <div className="app-bar-container">
-         <button className="menu"><span className="icon-menu"></span></button>
+	         <button className="menu"><span className="icon-menu"></span></button>
          
          <div className="Heading">
            <h1 className="title"><span>Members</span></h1>
@@ -53,7 +54,7 @@
           <div className="AppControls--box AppControls-left">
             <form className="Form Form--inline AppControls-search">
               <div className="Form-group">
-                <input type="search" className="Form-control" id="search" name="q" placeholder="Search Members" />
+                <input type="search" className="Form-control" id="search" name="q" placeholder='Search here' />
               </div>
               <button type="submit" className="btn btn-default icon-search">Search</button>
             </form>
@@ -62,14 +63,14 @@
           <div className="AppControls--box AppControls-middle"></div>
 
           <div className="AppControls--box AppControls-right">
-            <a className="button--icontext button--ricontext" href="/members/new"><i className="icon-plus"></i> <span>New Member</span></a>
+           <a className="button--icontext button--ricontext" href="/members/new"><i className="icon-plus"></i> <span>New Member</span></a>
           </div>
         </div>
 
         <UsersIndexList users={users} organizations={organizations} admins={admins} volunteers={volunteers}
           contributors={contributors} onUserApproval={this.handleUserApproval}/>
       </main>
-    </div>`
+    </div>` if (current_user in admins)
 
 
 @UsersIndexList = React.createClass

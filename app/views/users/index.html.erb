@@ -1,5 +1,6 @@
 <%= react_component 'UsersIndexBox',
                     {
+			    current_user: current_user.id,
                             users: @users,
                             organizations: Organization.order(:id) ,
                             admins: User.with_role(:admin).map{|a| a.id},
