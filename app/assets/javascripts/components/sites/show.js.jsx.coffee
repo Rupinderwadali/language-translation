@@ -83,7 +83,7 @@
       </header>
       <main>
         <div className="SitesShowBox">
-          <h1>{this.state.site.name} <span className="h4">{this.state.country.name}</span></h1>
+          <h2>{this.state.site.name} <span className="h4">{this.state.country.name}</span></h2>
           <br/>
           {alert}
           <VolunteersList data={this.state.volunteers} onRoleAddition={this.handleVolunteerAddition} onRoleRemoval={this.handleRoleRemoval}/>
@@ -104,10 +104,9 @@
     userNodes = @props.data.map((user) ->
       `<ShowUserNode key={user.id} user={user} onRoleRemoval={clickRemoval}/>`)
     `<div className="VolunteersList">
-      <h2>Volunteers</h2>
+      <h3>Volunteers</h3>
       <ul>
-        {userNodes}
-        <div className="col-md-5">
+       <div className="col-md-5">
           <div className="input-group">
             <input type="text" className="form-control" placeholder="New volunteer's username" ref='username'/>
             <span className="input-group-btn">
@@ -115,7 +114,8 @@
             </span>
           </div>
         </div>
-        <br/><br/>
+        <br/><br/><br/>
+         {userNodes}
       </ul>
     </div>`
 
@@ -131,10 +131,9 @@
     userNodes = @props.data.map((user) ->
       `<ShowUserNode key={user.id} user={user} onRoleRemoval={clickRemoval}/>`)
     `<div className="ContributorsList">
-      <h2>Contributors</h2>
+      <h3>Contributors</h3>
       <ul>
-        {userNodes}
-        <div className="col-md-5">
+       <div className="col-md-5">
           <div className="input-group">
             <input type="text" className="form-control" placeholder="New contributor's username" ref='username'/>
             <span className="input-group-btn">
@@ -142,7 +141,8 @@
             </span>
           </div>
         </div>
-        <br/><br/>
+        <br/><br/><br/>
+         {userNodes}
       </ul>
     </div>`
 
@@ -151,8 +151,11 @@
     @props.onRoleRemoval({user_id: @props.user.id, act: "", site_id: -1})
   render: ->
     show_url = "/members/" + @props.user.id
-    `<li className="UserNode">
-        <a className="h4" href={show_url}>{this.props.user.first_name} {this.props.user.last_name} </a>
-        <span className="h6">{this.props.user.username}</span>
-        <span className="glyphicon glyphicon-remove" onClick={this.handleRoleRemoval}></span>
+    `<li type = "square" className="UserNode">
+        <a className="h4" href={show_url}>{this.props.user.username} </a>
+        <button onclick={this.hangleRoleRemoval} className="btn btn-default">
+        <span className="glyphicon glyphicon-remove" /> 
+        </button>
+        <br/><br/>
     </li>`
+    
