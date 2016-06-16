@@ -3,5 +3,7 @@
                             site: @site,
                             country: @site.country,
                             volunteers: @volunteers,
-                            contributors: @contributors
-                    }%>
+                            contributors: @contributors,
+			    admins: User.with_role(:admin).map{|a| a.id},
+			    current_user: current_user.id 
+                   }%>

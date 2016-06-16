@@ -28,26 +28,20 @@
 
     <div class="CardListTable">
         <ul class="CardListTable-body">
-
+           <h3> List of all Organisations</h3>
             <% @organizations.each do |organization| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="#">
+                        <li class="CardListTable-cal u-w300px">
                             <div class="CardListTable-content">
                                 <% if can? :update, organization %>
-                                    <%= link_to organization.id, edit_organization_path(organization) %>
+				   <h3> My Organisation </h3>
+                                    <%= link_to organization.name, edit_organization_path(organization) %>
                                 <% else %>
-                                    <%= organization.id %>
+                                    <%= organization.name %>
                                 <% end %>
                             </div>
                         </li>
-
-                        <li class="CardListTable-cal u-w300px" data-th="Name">
-                            <div class="CardListTable-content">
-                                <%= organization.name %>
-                            </div>
-                        </li>
-
                         <% if can? :update, organization %>
                             <li class="CardListTable-cal CardListTable-cal--noheading u-w60px tar" data-th="Action">
                                 <div class="CardListTable-content">
@@ -73,6 +67,12 @@
             <% end %>
         </ul>
     </div>
-
+    <div class="AppControls">
+         <div class="AppControls--box AppControls-right">
+	     <button class="button--icontext button--ricontext">
+     		 <%= link_to 'List of vounteers and contributors', sites_path %>
+    	    </button>
+    	</div>
+   </div>
     <%= paginate @organizations %>
 </main>
