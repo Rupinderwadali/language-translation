@@ -37,19 +37,13 @@
             <% @categories.each do |category| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="#">
-                            <div class="CardListTable-content">
-                                <% if can? :update, category %>
-                                    <%= link_to category.id, edit_category_path(category) %>
-                                <% else %>
-                                    <%= category.id %>
-                                <% end %>
-                            </div>
-                        </li>
-
                         <li class="CardListTable-cal u-w300px" data-th="Name">
                             <div class="CardListTable-content">
-                                <%= category.name %>
+                                <% if can? :update, category %>
+                                    <%= link_to category.name, edit_category_path(category) %>
+                                <% else %>
+                                    <%= category.name %>
+                                <% end %>
                             </div>
                         </li>
 

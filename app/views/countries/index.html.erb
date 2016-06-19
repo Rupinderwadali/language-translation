@@ -31,9 +31,9 @@
             <% @countries.each do |country| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="#">
+                        <li class="CardListTable-cal u-w180px" data-th="Organisation">
                             <div class="CardListTable-content">
-                                <%= link_to country.id, country_path(country) %>
+                                <%= link_to country.name, country_path(country) %>
                             </div>
                         </li>
 

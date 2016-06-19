@@ -12,7 +12,8 @@ class SitesController < ApplicationController
     @site = Site.find(params[:id])
     @volunteers = User.with_role :volunteer, @site
     @contributors = User.with_role :contributor, @site
-  end
+   @admins =  User.with_role(:admin).map{|a| a.id}, @site
+ end
 
   def new
     if current_user.has_role? :superadmin

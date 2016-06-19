@@ -5,6 +5,7 @@
     admins: @props.admins
     volunteers: @props.volunteers
     contributors: @props.contributors
+    current_user: @props.current_user
   handleUserApproval: (userdata) ->
     approveurl = 'members/approve.json'
     disapproveurl = 'members/disapprove.json'
@@ -56,21 +57,11 @@
 
       <main className="UsersIndexBox">
         <div className="AppControls">
-          <div className="AppControls--box AppControls-left">
-            <form className="Form Form--inline AppControls-search">
-              <div className="Form-group">
-                <input type="search" className="Form-control" id="search" name="q" placeholder="Search Members" />
-              </div>
-              <button type="submit" className="btn btn-default icon-search">Search</button>
-            </form>
-          </div>
+         <div className="AppControls--box AppControls-middle"></div>
+	 <div> {button} </div>
+         </div>
 
-          <div className="AppControls--box AppControls-middle"></div>
-	<div className="AppControls--box AppControls-right">`
-	  if (user.id in admins)
-   	   `<a className="button--icontext button--ricontext" href="/members/new"><i className="icon-plus"></i> <span>New Member</span></a>`
-	`</div>
-	 <UsersIndexList users={users} organizations={organizations} admins={admins} volunteers={volunteers}
+        <UsersIndexList users={users} current_user={current_user} organizations={organizations} admins={admins} volunteers={volunteers}
           contributors={contributors} onUserApproval={this.handleUserApproval}/>
       </main>
     </div>`
@@ -198,6 +189,9 @@
         <li className="CardListTable-cal u-w80px" data-th="Role">
           <div className="CardListTable-content">
             {this.props.role}
+              <a className="btn btn-default" href="/sites"><i className="glyphicon glyphicon-plus"></i></a>
+       
+ 
           </div>
         </li>
      

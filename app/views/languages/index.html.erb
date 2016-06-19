@@ -36,21 +36,17 @@
             <% @languages.each do |language| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="#">
+                        <li class="CardListTable-cal u-w300px" data-th="Name">
                             <div class="CardListTable-content">
                                 <% if can? :update, language %>
-                                    <%= link_to language.id, edit_language_path(language) %>
+                                    <%= link_to language.name, edit_language_path(language) %>
                                 <% else %>
-                                    <%= language.id %>
+                                    <%= language.name %>
                                 <% end %>
                             </div>
                         </li>
 
-                        <li class="CardListTable-cal u-w300px" data-th="Name">
-                            <div class="CardListTable-content">
-                                <%= language.name %>
-                            </div>
-                        </li>
+                        
 
                         <% if can? :update, language %>
                             <li class="CardListTable-cal CardListTable-cal--noheading u-w60px tar" data-th="Action">
