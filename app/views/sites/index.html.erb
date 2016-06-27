@@ -11,12 +11,11 @@
 <main>
     <div class="AppControls">
         <div class="AppControls--box AppControls-left">
-            <form class="Form Form--inline AppControls-search">
-                <div class="Form-group">
-                    <input type="search" class="Form-control" id="search" placeholder="Search Sites" />
-                </div>
-                <button type="submit" class="btn btn-default icon-search">Search</button>
-            </form>
+         <%= form_tag(sites_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Sites" %>
+        <%= submit_tag "Search" %>
+        <% end %> 
+
         </div>
 
         <div class="AppControls--box AppControls-middle"></div>
@@ -28,14 +27,19 @@
 
     <div class="CardListTable">
         <ul class="CardListTable-body">
-
+	
             <% @sites.each do |site| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="#">
+                        <li class="CardListTable-cal u-w180px" data-th="Assign Site">
                             <div class="CardListTable-content">
-                                <%= link_to site.id, site_path(site) %>
-                            </div>
+                           <% if can? :update, site %>
+				     <%= link_to site.name, assign_site_path(site) %>
+                          <% else %>
+                                    <%= site.name %>
+
+				 <% end %>   
+			 </div>
                         </li>
 
                         <li class="CardListTable-cal u-w180px" data-th="Post">
@@ -76,5 +80,4 @@
         </ul>
     </div>
 
-    <%= paginate @sites %>
-</main>
+  </main>

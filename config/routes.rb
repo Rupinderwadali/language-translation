@@ -29,6 +29,13 @@ Rails.application.routes.draw do
     put     :accept_invitation, to: "invitations#update"
   end
 
+ resources :sites do 
+     member do
+      get 'assign'
+    end
+   end
+
+
   resources :users, path: :members do 
     collection do
       post :approve,        action: :approve_user
@@ -43,7 +50,8 @@ Rails.application.routes.draw do
   resources :countries do
     resources :sites
   end
-
+ 
+ 
   resources :sites
   # Routes for custom methods (for use with ReactJS)
   post "sites/add_role", to: "sites#add_role"

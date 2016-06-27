@@ -5,6 +5,7 @@
     admins: @props.admins
     volunteers: @props.volunteers
     contributors: @props.contributors
+    current_user: @props.current_user
   handleUserApproval: (userdata) ->
     approveurl = 'members/approve.json'
     disapproveurl = 'members/disapprove.json'
@@ -36,9 +37,15 @@
     admins = @state.admins
     volunteers = @state.volunteers
     contributors = @state.contributors
-
-    `<div>
-      <header className="app-bar promote-layer">
+    current_user = @state.current_user
+    button =
+      `<div className="AppControls">
+	<div className="AppControls--box AppControls-right">
+            <a className="button--icontext button--ricontext" href="/members/new"><i className="icon-plus"></i> <span>New Member</span></a>
+        </div>
+      </div>` if current_user in admins
+     `<div>
+      	<header className="app-bar promote-layer">
        <div className="app-bar-container">
          <button className="menu"><span className="icon-menu"></span></button>
          
@@ -50,28 +57,14 @@
 
       <main className="UsersIndexBox">
         <div className="AppControls">
-          <div className="AppControls--box AppControls-left">
-            <form className="Form Form--inline AppControls-search">
-              <div className="Form-group">
-                <input type="search" className="Form-control" id="search" name="q" placeholder="Search Members" />
-              </div>
-              <button type="submit" className="btn btn-default icon-search">Search</button>
-            </form>
-          </div>
+         <div className="AppControls--box AppControls-middle"></div>
+	 <div> {button} </div>
+         </div>
 
-          <div className="AppControls--box AppControls-middle"></div>
-
-          <div className="AppControls--box AppControls-right">
-            <a className="button--icontext button--ricontext" href="/members/new"><i className="icon-plus"></i> <span>New Member</span></a>
-          </div>
-        </div>
-
-        <UsersIndexList users={users} organizations={organizations} admins={admins} volunteers={volunteers}
+        <UsersIndexList users={users} current_user={current_user} organizations={organizations} admins={admins} volunteers={volunteers}
           contributors={contributors} onUserApproval={this.handleUserApproval}/>
       </main>
     </div>`
-
-
 @UsersIndexList = React.createClass
   handleApproval: (data) ->
     @props.onUserApproval(data)
@@ -81,6 +74,7 @@
     admins = @props.admins
     volunteers = @props.volunteers
     contributors = @props.contributors
+    current_user = @props.current_user
     userNodes = @props.users.map((user) ->
       organization = organizations[user.organization_id - 1]
       role =
@@ -88,7 +82,7 @@
         else if (user.id in volunteers) then 'Volunteer'
         else if (user.id in contributors) then 'Contributor'
         else 'Guest'
-      `<UserNode key={user.id} user={user} organization={organization} role={role} onUserApproval={clickApproval}/>`)
+      `<UserNode key={user.id} user={user} admins={admins} volunteers={volunteers} current_user={current_user} organization={organization} role={role} onUserApproval={clickApproval}/>`)
 
     `<div className="CardListTable">
       <ul className="CardListTable-body">
@@ -112,6 +106,11 @@
     else
       @props.onUserApproval({user_id: user.id, action: 'approve'})
   render: ->
+    organizations = @props.organizations
+    admins = @props.admins
+    volunteers = @props.volunteers
+    contributors = @props.contributors
+    current_user = @props.current_user
     modal_message =
       if @props.user.login_approval_at
         "Are you sure that you want to disapprove '" + @props.user.username + "' from signing in?"
@@ -151,6 +150,14 @@
 
     show_url = "/members/" + @props.user.id
 
+    buttons=
+        `<li className="CardListTable-cal u-w80px" data-th="Approval/Disapproval">
+          <div className="CardListTable-content">
+            {login_approval}
+          </div>
+         </li>` if current_user in admins
+    
+
     organization_name = @props.organization.name if @props.organization
     `<li>
       <ul className="CardListTableRow">
@@ -161,8 +168,8 @@
         </li>
         <li className="CardListTable-cal u-w100px" data-th="Organization">
           <div className="CardListTable-content">
-            {organization_name}
-          </div>
+            {organization_name} 
+         </div>
         </li>
         <li className="CardListTable-cal u-w100px" data-th="Email">
           <div className="CardListTable-content">
@@ -182,12 +189,14 @@
         <li className="CardListTable-cal u-w80px" data-th="Role">
           <div className="CardListTable-content">
             {this.props.role}
+              <a className="btn btn-default" href="/sites"><i className="glyphicon glyphicon-plus"></i></a>
+       
+ 
           </div>
         </li>
-        <li className="CardListTable-cal u-w80px" data-th="Role">
-          <div className="CardListTable-content">
-            {login_approval}
-          </div>
-        </li>
+     
+          {buttons}
+     
       </ul>
-    </li>`
+     </li>`
+ 

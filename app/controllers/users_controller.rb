@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
 
     @pagination = { current_page: @users.current_page, total_pages: @users.total_pages }
-  end
+ end
 
   def new
     @user = User.new
