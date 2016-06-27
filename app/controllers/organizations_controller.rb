@@ -3,7 +3,14 @@ class OrganizationsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @organizations = Organization.page(params[:page]).per(20)
+    @organizations = Organization
+  if params[:search]
+    @organizations = Organization.search(params[:search]).order("created_at DESC")
+  else
+    @organizations = Organization.all.order('created_at DESC')
+  end
+
+
   end
 
   def show

@@ -42,6 +42,11 @@
         </div>
 
         <div class="Form-group">
+             <%= f.label :location %>
+             <%= f.collection_select(:location, Country.all, :name, :name, {include_blank: "None"}, {class: "Form-control"}) %>
+        </div>
+
+        <div class="Form-group">
             <%= f.label :lang %>
             <%= f.collection_select(:lang, Language.all, :name, :name, {include_blank: "None"}, {class: "Form-control"}) %>
         </div>

@@ -11,12 +11,11 @@
 <main>
     <div class="AppControls">
         <div class="AppControls--box AppControls-left">
-            <form class="Form Form--inline AppControls-search">
-                <div class="Form-group">
-                    <input type="search" class="Form-control" id="search" placeholder="Search Languages" />
-                </div>
-                <button type="submit" class="btn btn-default icon-search">Search</button>
-            </form>
+	 <%= form_tag(languages_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Languages" %>
+        <%= submit_tag "Search" %>
+        <% end %> 
+
         </div>
 
         <div class="AppControls--box AppControls-middle"></div>
@@ -74,5 +73,5 @@
         </ul>
     </div>
 
-    <%= paginate @languages %>
+   
 </main>

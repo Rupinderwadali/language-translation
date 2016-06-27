@@ -15,8 +15,6 @@
 #
 
 class Article < ActiveRecord::Base
-  include PgSearch
-
   belongs_to :language
   belongs_to :category
   has_many :audios
@@ -32,17 +30,7 @@ class Article < ActiveRecord::Base
 
   validates :picture, presence: true
 
-  # PgSearch
-  pg_search_scope :article_search,
-                  against: :tsv_data,
-                  using: {
-                      tsearch: {
-                          dictionary: 'english',
-                          any_word: true,
-                          prefix: true,
-                          tsvector_column: 'tsv_data'
-                      }
-                  }
+ enum state:   [:draft, :published]
+  # adding search feature
 
-  enum state:   [:draft, :published]
 end

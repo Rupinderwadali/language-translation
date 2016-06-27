@@ -13,4 +13,9 @@ class Organization < ActiveRecord::Base
   has_many :countries
 
   validates :name, presence: true
+  # add search feature
+    def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
+
 end

@@ -16,4 +16,9 @@ class Country < ActiveRecord::Base
   has_many :sites, dependent: :destroy
 
   validates_presence_of :name, :organization_id
+  # add search feature
+    def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
+
 end

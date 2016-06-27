@@ -9,7 +9,11 @@
 #
 
 class Language < ActiveRecord::Base
-  has_many :articles, dependent: :destroy
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%") 
+  end
+ 
+ has_many :articles, dependent: :destroy
 
   validates :name, presence: true
 end

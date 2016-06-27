@@ -3,9 +3,21 @@ class CountriesController < ApplicationController
 
   def index
     if current_user.has_role? :superadmin
-      @countries = Country.all.page(params[:page]).per(20)
+      @countries = Country.all
+      if params[:search]
+       @countries = Country.search(params[:search]).order("created_at DESC")
+      else
+       @countries = Country.all.order('created_at DESC')
+      end
     else
-      @countries = current_user.organization.countries.page(params[:page]).per(20)
+      @countries = current_user.organization.countries
+      if params[:search]
+    @countries = Country.search(params[:search]).order("created_at DESC")
+  else
+    @countries = current_user.organization.countries.order('created_at DESC')
+  end
+
+
     end
   end
 
