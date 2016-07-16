@@ -15,9 +15,11 @@
 #
 
 class Article < ActiveRecord::Base
-  include PgSearch
 
-  belongs_to :language
+include PublicActivity::Model
+tracked owner: Proc.new{ |controller, model| controller && controller.current_user }
+
+ belongs_to :language
   belongs_to :category
   has_many :audios
 
@@ -31,18 +33,6 @@ class Article < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
 
   validates :picture, presence: true
-
-  # PgSearch
-  pg_search_scope :article_search,
-                  against: :tsv_data,
-                  using: {
-                      tsearch: {
-                          dictionary: 'english',
-                          any_word: true,
-                          prefix: true,
-                          tsvector_column: 'tsv_data'
-                      }
-                  }
 
   enum state:   [:draft, :published]
 end

@@ -11,7 +11,10 @@
 #
 
 class Country < ActiveRecord::Base
-  belongs_to :organization
+include PublicActivity::Model
+tracked owner: Proc.new{ |controller, model| controller && controller.current_user }
+ 
+ belongs_to :organization
   belongs_to :user
   has_many :sites, dependent: :destroy
 
