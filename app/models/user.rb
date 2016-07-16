@@ -37,7 +37,7 @@
 #
 
 class User < ActiveRecord::Base
- include PublicActivity::Model
+  include PublicActivity::Model
 tracked owner: Proc.new{ |controller, model| controller && controller.current_user }
 
   def self.search(search)
