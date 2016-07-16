@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # Route config for ActiveAdmin
   ActiveAdmin.routes(self)
 
@@ -37,7 +36,7 @@ Rails.application.routes.draw do
       post :revoke_admin,   action: :revoke_admin
     end
   end
-
+  resources :activities
   resources :organizations
 
   resources :countries do

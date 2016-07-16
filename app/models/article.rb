@@ -15,10 +15,12 @@
 #
 
 class Article < ActiveRecord::Base
-  include PgSearch
+ 
+include PublicActivity::Model
+tracked owner: Proc.new{ |controller, model| controller && controller.current_user }
 
-  belongs_to :language
-  belongs_to :category
+ belongs_to :language
+ belongs_to :category
   has_many :audios
 
   accepts_nested_attributes_for :audios, reject_if: :all_blank, allow_destroy: true

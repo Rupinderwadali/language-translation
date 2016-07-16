@@ -9,6 +9,9 @@
 #
 
 class Organization < ActiveRecord::Base
+  include PublicActivity::Model
+tracked owner: Proc.new{ |controller, model| controller && controller.current_user }
+
   has_many :users
   has_many :countries
 
