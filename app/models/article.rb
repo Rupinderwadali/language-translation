@@ -45,8 +45,7 @@ class Article < ActiveRecord::Base
                   }
 
   enum state:   [:draft, :published]
-filterrific(
-
+ filterrific(
     available_filters: [
    :with_language_id,
    :with_category_id,
