@@ -20,7 +20,7 @@
 //= require plugins/paginator
 //= require components
 //= require underscore
-
+//= require filterrific/filterrific-jquery
 //FIXME by Isuri
 
 $(document).ready(function(){

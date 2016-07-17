@@ -15,3 +15,76 @@
  *= require custom-web-starter-kit
  *= require_self
  */
+.flash {
+color:#83c537;
+font-size:18px;
+width:600px;
+position:fixed;
+top:20px;
+right:10px;
+z-index:9999999;
+}
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+.roop {
+    display:block;
+
+}
+
+.activity {
+width: 1050px;
+border-bottom: solid 1px #ccc;
+padding: 16px 0;
+display:block; 
+em{
+    color: #777;
+    font-size: 12px;
+   }
+}
+#filterrific_result {
+display:none;
+}
+.box1 {
+background-color: #e3e4e1;
+height:80px;
+padding: 30px 10px 30px 20px;
+}
+.gap{
+height:10px;
+}
+.box2, .box3, .box4{
+display: inline;
+}
+.box2{
+margin:10px 10px 20px 40px;
+}
+.box3{
+margin:400px 480px 50px 50px;
+}
+
+
