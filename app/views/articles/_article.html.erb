@@ -1,57 +1,40 @@
-<li>
-    <ul class="CardListTableRow">
-
-        <li class="CardListTable-cal u-w180px" data-th="Picture">
-            <div class="CardListTable-content">
-                <%= link_to image_tag(article.picture_url, width: 50), article_path(article) if article.picture.present? %>
-            </div>
-        </li>
-
-        <li class="CardListTable-cal u-w180px" data-th="English Text">
-            <div class="CardListTable-content">
-                <%= article.english %>
-            </div>
-        </li>
-
-        <li class="CardListTable-cal u-w180px" data-th="Phonetic Text">
-            <div class="CardListTable-content">
-                <%= article.phonetic %>
-            </div>
-        </li>
-
-        <li class="CardListTable-cal u-w180px" data-th="Category">
-            <div class="CardListTable-content">
-                <%= article.category.try(:name) %>
-            </div>
-        </li>
-
-        <li class="CardListTable-cal u-w180px" data-th="Language">
-            <div class="CardListTable-content">
-                <% if article.language.present? %>
+<div id="filterrific_results">
+<table>
+    <thead>
+    <tr>
+      <th>Picture</th>
+      <th>English</th>
+      <th>Phonetic</th>
+      <th>Category</th>
+      <th>Language</th>
+    </tr>
+    </thead>
+  <% @articles.each do |article| %>
+    
+ <tbody>
+     <tr>
+   
+        <td><%= link_to image_tag(article.picture_url, width: 50), article_path(article) if article.picture.present? %></td>
+        <td><%= article.english %></td>
+        <td><%= article.phonetic %></td>
+        <td><%= article.category.try(:name) %></td>
+        <td><% if article.language.present? %>
                     <%= article.language.name %>
                 <% end %>
-            </div>
-        </li>
+        </td>
+   </tr>
+    </tbody>
+   <% end %>
+  
+ </table>
+</div>
 
-        <% if can? :update, article %>
-            <li class="CardListTable-cal CardListTable-cal--noheading u-w60px tar" data-th="Action">
-                <div class="CardListTable-content">
-                    <div class="dropdown">
-                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="button--icon" href="#"><i class="icon-action"></i></a>
-                        <ul class="dropdown-menu u-rightPopup">
-                            <li>
-                                <%= link_to 'Edit', edit_article_path(article) %>
-                            </li>
-                            <% if can? :destroy, article %>
-                                <li>
-                                    <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
-                                </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-        <% end %>
 
-    </ul>
-</li>
+
+
+
+
+
+
+
+

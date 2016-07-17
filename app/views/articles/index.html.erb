@@ -10,14 +10,7 @@
 <main>
     <div class="AppControls">
         <div class="AppControls--box AppControls-left">
-            <form class="Form Form--inline AppControls-search" method='get'>
-                <div class="Form-group">
-                    <input type="search" class="Form-control" name="q" id="search" placeholder="Search Articles" />
-                </div>
-                <button type="submit" class="btn btn-default icon-search">Search</button>
-            </form>
-        </div>
-
+     </div>
         <div class="AppControls--box AppControls-middle"></div>
 
         <div class="AppControls--box AppControls-right">
@@ -27,9 +20,42 @@
 
     <div class="CardListTable">
         <ul class="CardListTable-body">
-            <%= render partial: 'article', collection: @articles %>
-        </ul>
+             <%= form_for_filterrific @filterrific do |f| %>
+<div class = "box1">
+<div class = "box2">
+   Language
+    <%= f.select(
+      :with_language_id,
+      @filterrific.select_options[:with_language_id],
+      { include_blank: '- Any -' }
+    ) %>
+  </div>
+  <div class="box3">
+   Category
+   <%= f.select(
+    :with_category_id,
+     @filterrific.select_options[:with_category_id],
+     { include_blank: '- Any -' }
+    ) %>
+  </div>
+
+ <div class="box4">
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+</div>
+<div class="gap"></div>
+<% end %>
+<%= render(
+  partial: 'articles/article',
+  locals: { article: @article }
+) %>
+
+       </ul>
     </div>
 
-    <%= paginate @articles %>
 </main>
+          
+
