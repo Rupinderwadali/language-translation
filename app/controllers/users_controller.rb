@@ -3,14 +3,14 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if params[:q].blank?
-      @users = User.accessible_by(current_ability).page(params[:page]).per(20)
-    else
-      @users = User.accessible_by(current_ability).user_search(params[:q]).page(params[:page]).per(20)
-    end
-
-    @pagination = { current_page: @users.current_page, total_pages: @users.total_pages }
+      @users = User.accessible_by(current_ability)
+  if params[:search]
+    @users = User.search(params[:search]).order("created_at DESC")
+  else
+    @users = User.accessible_by(current_ability).order('created_at DESC')
   end
+end
+
 
   def new
     @user = User.new

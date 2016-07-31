@@ -37,7 +37,15 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessor :no_invitation
+ include PublicActivity::Model
+tracked owner: Proc.new{ |controller, model| controller && controller.current_user }
+
+  def self.search(search)
+    where("location LIKE ?", "%#{search}%")
+   
+  end
+ 
+ attr_accessor :no_invitation
 
   GENGER={male: "Male", female: "Female"}
 
