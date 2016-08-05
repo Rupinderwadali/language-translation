@@ -7,7 +7,8 @@
       <th>Phonetic</th>
       <th>Category</th>
       <th>Language</th>
-    </tr>
+      <th>Action</th> 
+   </tr>
     </thead>
   <% @articles.each do |article| %>
     
@@ -22,6 +23,13 @@
                     <%= article.language.name %>
                 <% end %>
         </td>
+        <td><% if can? :update, article %>
+                <%= link_to 'Edit', edit_article_path(article) %>
+            <% end %>
+            <% if can? :destroy, article %>
+	        <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+         </td>
    </tr>
     </tbody>
    <% end %>
