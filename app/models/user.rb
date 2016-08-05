@@ -37,9 +37,6 @@
 #
 
 class User < ActiveRecord::Base
- include PublicActivity::Model
-tracked owner: Proc.new{ |controller, model| controller && controller.current_user }
-
   def self.search(search)
     where("location LIKE ?", "%#{search}%")
    
@@ -88,3 +85,4 @@ tracked owner: Proc.new{ |controller, model| controller && controller.current_us
     invite! if no_invitation=="0"
   end
 end
+
