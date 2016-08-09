@@ -45,7 +45,7 @@
             <dl class="Info">
                 <% @country.sites.reverse.each do |site| %>
                     <dt>#<%= site.id %></dt>
-                    <dd><%= site.name %></dd>
+                    <dd><a class="button--icontext button--ricontext" href="<%= site_path(site) %>" <%= link_to site.name %></a></dd>
                 <% end %>
             </dl>
 

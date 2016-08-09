@@ -1,12 +1,6 @@
 class SitesController < ApplicationController
   load_and_authorize_resource
 
-  def assign
-  @site =  Site.find(params[:id])
-  @volunteers = User.with_role :volunteer, @site
-  @contributors = User.with_role :contributor, @site
-  end
-
   def index
     current_user.organization.countries.each do |a|
       @sites << a.sites

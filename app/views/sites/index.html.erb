@@ -31,14 +31,15 @@
             <% @sites.each do |site| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w180px" data-th="Assign Site">
+                        <li class="CardListTable-cal u-w180px" data-th="Assign Role">
                             <div class="CardListTable-content">
                            <% if can? :update, site %>
-				     <%= link_to site.name, assign_site_path(site) %>
+                         <a class="button--icontext button--ricontext" href="<%= site_path(site) %>" <%= link_to site.name %></a>
+			
                           <% else %>
                                     <%= site.name %>
 
-				 <% end %>   
+				 <% end %>
 			 </div>
                         </li>
 
@@ -48,13 +49,7 @@
                             </div>
                         </li>
 
-                        <li class="CardListTable-cal u-w300px" data-th="Site">
-                            <div class="CardListTable-content">
-                                <%= site.name %>
-                            </div>
-                        </li>
-
-                        <% if can? :update, site %>
+                          <% if can? :update, site %>
                             <li class="CardListTable-cal CardListTable-cal--noheading u-w60px tar" data-th="Action">
                                 <div class="CardListTable-content">
                                     <div class="dropdown">

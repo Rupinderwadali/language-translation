@@ -31,10 +31,14 @@
             <% @countries.each do |country| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="#">
+                        <li class="CardListTable-cal u-w180px" data-th="Country">
                             <div class="CardListTable-content">
-                                <%= link_to country.id, country_path(country) %>
-                            </div>
+                              <% if can? :update, country %>
+                                 <a class="button--icontext button--ricontext" href="<%= country_path(country) %>" <%= link_to country.name %></a>
+                              <% else %>
+                                  <%= country.name %>
+			      <% end %>
+                             </div>
                         </li>
 
                         <li class="CardListTable-cal u-w180px" data-th="Organization">
@@ -42,14 +46,8 @@
                                 <%= country.organization.name %>
                             </div>
                         </li>
-
-                        <li class="CardListTable-cal u-w130px" data-th="Country">
-                            <div class="CardListTable-content">
-                                <%= country.name %>
-                            </div>
-                        </li>
-
-                        <li class="CardListTable-cal u-w130px"  data-th="Manager">
+ 
+                       <li class="CardListTable-cal u-w130px"  data-th="Manager">
                             <div class="CardListTable-content">
                                 <%= link_to country.user.username, user_path(country.user) if (country.user) %>
                             </div>

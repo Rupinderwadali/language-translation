@@ -29,13 +29,6 @@ Rails.application.routes.draw do
     put     :accept_invitation, to: "invitations#update"
   end
 
- resources :sites do 
-     member do
-      get 'assign'
-    end
-   end
-
-
   resources :users, path: :members do 
     collection do
       post :approve,        action: :approve_user

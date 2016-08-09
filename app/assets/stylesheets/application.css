@@ -15,3 +15,10 @@
  *= require custom-web-starter-kit
  *= require_self
  */
+.style{
+padding-right: 100px;
+width:250px; 
+max-width:500px; 
+display: inline-block;
+}
+
