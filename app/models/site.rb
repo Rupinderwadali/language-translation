@@ -17,4 +17,8 @@ class Site < ActiveRecord::Base
 
   # default order when calling the Site model
   default_scope -> { order('created_at DESC') }
+  
+  def self.search(search)
+    where("name iLIKE ?", "%#{search}%")
+  end
 end

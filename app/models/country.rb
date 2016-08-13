@@ -18,7 +18,7 @@ class Country < ActiveRecord::Base
   validates_presence_of :name, :organization_id
   # add search feature
     def self.search(search)
-    where("name LIKE ?", "%#{search}%")
+    where("name iLIKE ?", "%#{search}%")
   end
 
 end

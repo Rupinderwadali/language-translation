@@ -50,17 +50,7 @@
 
       <main className="UsersIndexBox">
         <div className="AppControls">
-          <div className="AppControls--box AppControls-left">
-            <form className="Form Form--inline AppControls-search">
-              <div className="Form-group">
-                <input type="search" className="Form-control" id="search" name="q" placeholder="Search Members" />
-              </div>
-              <button type="submit" className="btn btn-default icon-search">Search</button>
-            </form>
-          </div>
-
           <div className="AppControls--box AppControls-middle"></div>
-
           <div className="AppControls--box AppControls-right">
             <a className="button--icontext button--ricontext" href="/members/new"><i className="icon-plus"></i> <span>New Member</span></a>
           </div>

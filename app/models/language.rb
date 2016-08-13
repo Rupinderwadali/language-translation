@@ -10,7 +10,7 @@
 
 class Language < ActiveRecord::Base
   def self.search(search)
-    where("name LIKE ?", "%#{search}%") 
+    where("name iLIKE ?", "%#{search}%") 
   end
  
  has_many :articles, dependent: :destroy

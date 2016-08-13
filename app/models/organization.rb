@@ -15,7 +15,7 @@ class Organization < ActiveRecord::Base
   validates :name, presence: true
   # add search feature
     def self.search(search)
-    where("name LIKE ?", "%#{search}%")
+    where("name iLIKE ?", "%#{search}%")
   end
 
 end

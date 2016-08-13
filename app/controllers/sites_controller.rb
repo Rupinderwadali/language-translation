@@ -1,13 +1,19 @@
 class SitesController < ApplicationController
   load_and_authorize_resource
-
-  def index
+ 
+   def index
     current_user.organization.countries.each do |a|
       @sites << a.sites
-    end
-    @sites = @sites.page(params[:page]).per(20)
+  if params[:search]
+    @sites = Site.search(params[:search]).order("created_at DESC")
+  else
+    @sites << a.sites.order('created_at DESC')
   end
 
+   end
+    @sites = @sites.page(params[:page]).per(20)
+  end
+  
   def show
     @site = Site.find(params[:id])
     @volunteers = User.with_role :volunteer, @site
