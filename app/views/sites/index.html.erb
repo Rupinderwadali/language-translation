@@ -36,11 +36,11 @@
                     <ul class="CardListTableRow">
                        <li class="CardListTable-cal u-w180px" data-th="Site">
                            <div class="CardListTable-content">
-                                <%= link_to site.id, site_path(site) %>
+                                <%= link_to site.name, site_path(site) %>
                             </div>
                         </li>
 
-                        <li class="CardListTable-cal u-w180px" data-th="Post">
+                        <li class="CardListTable-cal u-w180px" data-th="Country">
                             <div class="CardListTable-content">
                                 <%= site.country.name if site.country %>
                             </div>
@@ -57,17 +57,9 @@
 		 	      <a class="button--icontext button--ricontext" href="<%= site_path(site) %>"><span>Contributors</span></a>
 		  	    </div>
 			</li>
-
-
-
-                        <li class="CardListTable-cal u-w300px" data-th="Site">
-                            <div class="CardListTable-content">
-                                <%= site.name %>
-                            </div>
-                        </li>
-
-                        <% if can? :update, site %>
-                            <li class="CardListTable-cal CardListTable-cal--noheading u-w60px tar" data-th="Actions">
+                      
+			 <% if can? :update, site %>
+                            <li class="CardListTable-cal u-w60px" data-th="Actions">
                                 <div class="CardListTable-content">
                                     <div class="dropdown">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="button--icon" href="#"><i class="icon-action"></i></a>
