@@ -34,25 +34,18 @@
             <% @organizations.each do |organization| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="#">
+                        <li class="CardListTable-cal u-w300px" data-th="Organisation">
                             <div class="CardListTable-content">
                                 <% if can? :update, organization %>
-                                    <%= link_to organization.id, edit_organization_path(organization) %>
+                                    <%= link_to organization.name, edit_organization_path(organization) %>
                                 <% else %>
-                                    <%= organization.id %>
+                                    <%= organization.name %>
                                 <% end %>
                             </div>
                         </li>
-
-                        <li class="CardListTable-cal u-w300px" data-th="Name">
-                            <div class="CardListTable-content">
-                                <%= organization.name %>
-                            </div>
-                        </li>
-
-                        <% if can? :update, organization %>
-                            <li class="CardListTable-cal CardListTable-cal--noheading u-w60px tar" data-th="Action">
-                                <div class="CardListTable-content">
+                       <% if can? :update, organization %>
+			     <li class="CardListTable-cal u-w30px" data-th="Action">
+                               <div class="CardListTable-content">
                                     <div class="dropdown">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="button--icon" href="#"><i class="icon-action"></i></a>
                                         <ul class="dropdown-menu u-rightPopup">

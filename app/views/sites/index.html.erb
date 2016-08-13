@@ -34,7 +34,7 @@
             <% @sites.each do |site| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w30px" data-th="Site">
+                        <li class="CardListTable-cal u-w180px" data-th="Site">
                             <div class="CardListTable-content">
                            <% if can? :update, site %>
 				     <%= link_to site.name, site_path(site) %>
@@ -45,14 +45,14 @@
 			 </div>
                         </li>
 
-                        <li class="CardListTable-cal u-w180px" data-th="Post">
+                        <li class="CardListTable-cal u-w180px" data-th="Country">
                             <div class="CardListTable-content">
                                 <%= site.country.name if site.country %>
                             </div>
                         </li>
 
                         <% if can? :update, site %>
-                            <li class="CardListTable-cal CardListTable-cal--noheading u-w60px tar" data-th="Action">
+                            <li class="CardListTable-cal CardListTable-cal u-w30px tar" data-th="Action">
                                 <div class="CardListTable-content">
                                     <div class="dropdown">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="button--icon" href="#"><i class="icon-action"></i></a>

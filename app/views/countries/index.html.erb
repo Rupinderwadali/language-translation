@@ -31,7 +31,7 @@
             <% @countries.each do |country| %>
                 <li>
                     <ul class="CardListTableRow">
-                        <li class="CardListTable-cal u-w180px" data-th="Organisation">
+                        <li class="CardListTable-cal u-w180px" data-th="Country">
                             <div class="CardListTable-content">
                                 <%= link_to country.name, country_path(country) %>
                             </div>
@@ -56,7 +56,7 @@
                         </li>
 
                         <% if can? :update, country %>
-                            <li class="CardListTable-cal CardListTable-cal--noheading u-w60px tar" data-th="Action">
+                            <li class="CardListTable-cal CardListTable-cal u-w30px tar" data-th="Action">
                                 <div class="CardListTable-content">
                                     <div class="dropdown">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="button--icon" href="#"><i class="icon-action"></i></a>
