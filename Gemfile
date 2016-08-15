@@ -23,8 +23,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
+gem 'ember-rails'
+gem 'ember-source'
+gem 'emblem-rails'
 
 gem 'react-rails', '~> 1.0'
 
