@@ -70,12 +70,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :languages
   end
- namespace :api do
-  namespace :v1 do
-    resources :categories
-  end
- end
-
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
