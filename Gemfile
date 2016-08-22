@@ -23,10 +23,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
 # Add the ember in the rails
 gem 'ember-rails'
-gem 'ember-source', '~> 1.8.1'
+gem 'ember-source', '~> 2.7.0'
 gem 'emblem-rails'
 
 # Add the react-rails

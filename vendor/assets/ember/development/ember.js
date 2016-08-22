@@ -1,5 +1,5 @@
 // Fetched from channel: tags/v1.5.0, with url http://builds.emberjs.com/tags/v1.5.0/ember.js
-// Fetched on: 2016-08-22T05:09:32Z
+// Fetched on: 2016-08-15T12:31:29Z
 /*!
  * @overview  Ember - JavaScript Application Framework
  * @copyright Copyright 2011-2014 Tilde Inc. and contributors

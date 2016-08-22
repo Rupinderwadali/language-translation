@@ -1,5 +1,5 @@
 // Fetched from channel: tags/v1.5.0, with url http://builds.emberjs.com/tags/v1.5.0/ember-template-compiler.js
-// Fetched on: 2016-08-22T05:10:01Z
+// Fetched on: 2016-08-15T12:43:39Z
 (function() {
 var Ember = { assert: function() {}, FEATURES: { isEnabled: function() {} } };
 /*!

@@ -46,7 +46,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-  # configure the environment for ember
+  # for setting the environment for the ember
   config.ember.variant = :development
-
 end
