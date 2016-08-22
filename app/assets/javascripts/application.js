@@ -13,15 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap
-//= require turbolinks
 //= require react
 //= require react_ujs
 //= require react-bootstrap
 //= require plugins/paginator
 //= require components
 //= require underscore
-
-//FIXME by Isuri
 
 $(document).ready(function(){
     /*

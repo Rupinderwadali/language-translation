@@ -23,9 +23,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 
+# Add the ember in the rails
+gem 'ember-rails'
+gem 'ember-source', '~> 1.8.1'
+gem 'emblem-rails'
+
+# Add the react-rails
 gem 'react-rails', '~> 1.0'
 
 # Use ActiveModel has_secure_password
