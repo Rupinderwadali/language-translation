@@ -6,7 +6,9 @@ gem 'rails' , '4.2.1'
 gem 'pg'
 # pg_search builds ActiveRecord named scopes that take advantage of PostgreSQL's full text search
 gem 'pg_search'
-
+# rack-offline for the offline work
+gem "rack-offline" 
+# carrierwave for the file upload
 gem 'carrierwave'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

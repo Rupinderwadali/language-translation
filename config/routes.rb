@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+get "/application.manifest" => Rails::Offline
 
   # Route config for ActiveAdmin
   ActiveAdmin.routes(self)
