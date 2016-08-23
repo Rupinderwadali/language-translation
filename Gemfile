@@ -25,7 +25,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
+#add bootstrap in rails
+gem 'bootstrap-sass'
+# add react-bootstrap gem for front-end to show coffeescript
+gem 'react-bootstrap-rails'
+# add react-rails in rails for front-end in react
 gem 'react-rails', '~> 1.0'
 
 # Use ActiveModel has_secure_password
@@ -91,3 +95,7 @@ group :test, :development do
 end
 
 gem 'memory_test_fix'
+# deploy app to heroku
+gem 'rails_12factor', group: :production
+ruby '2.2.3'
+
