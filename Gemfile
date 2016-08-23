@@ -64,6 +64,9 @@ gem 'simple-navigation'
 # A lightweight Sass tool set
 gem 'bourbon'
 
+# add service worker api in rails
+gem "serviceworker-rails"
+
 group :test, :development do
   # Adds MiniTest as the default testing library in Rails 3 and 4
   gem 'minitest-rails'
