@@ -34,6 +34,14 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
 
+     # Superadmins, Admins have access to Sites. 
+    if current_user and current_user.has_any_role? :superadmin, :admin
+      primary.item :sites, "Assign Role", sites_path, highlights_on: :subpath do |sub|
+        sub.dom_class = 'nav nav-pills'
+        sub.item :new_site, 'New site', new_site_path
+      end
+    end
+
     # Volunteers have access to the site they belong to.
     if current_user and current_user.has_role? :volunteer, :any
       primary.item :sites, "My Site", site_path(Site.with_role(:volunteer, current_user).first)
